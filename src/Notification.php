@@ -60,13 +60,39 @@ final class SimpleNotifiable implements Notifiable
     }
 
     public function toDatabase(Notifiable $n): array { return []; }
-    public function toMail(Notifiable $n): mixed {
-        return null;
+    public function toMail(Notifiable $n): mixed
+    {
+        $email = $n->routeNotificationFor('mail');
+        if ($email === null) { return null; }
+        return [
+            'channel' => 'mail',
+            'to' => $email,
+            'subject' => 'Notification',
+            'body' => 'You have a new notification.',
+            'headers' => [],
+        ];
     }
-    public function toSms(Notifiable $n): mixed {
-        return null;
+
+    public function toSms(Notifiable $n): mixed
+    {
+        $phone = $n->routeNotificationFor('sms');
+        if ($phone === null) { return null; }
+        return [
+            'channel' => 'sms',
+            'to' => $phone,
+            'message' => 'You have a new notification.',
+        ];
     }
-    public function toTelegram(Notifiable $n): mixed {
-        return null;
+
+    public function toTelegram(Notifiable $n): mixed
+    {
+        $chatId = $n->routeNotificationFor('telegram');
+        if ($chatId === null) { return null; }
+        return [
+            'channel' => 'telegram',
+            'chat_id' => $chatId,
+            'text' => 'You have a new notification.',
+            'parse_mode' => 'HTML',
+        ];
     }
 }
