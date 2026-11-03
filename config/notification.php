@@ -2,74 +2,35 @@
 
 declare(strict_types=1);
 
-/*
- * تَوان | Tavaan — Notification
- * config/notification.php — پیکربندی آگاه‌سازی چندکاناله (DOC-066 §6).
+/*|--------------------------------------------------------------------------
+ | Notification Engine Configuration
+ |--------------------------------------------------------------------------
+ |
+ | پیکربندی موتور notification — همهٔ کلیدهای مستندشده در `docs/03-engines/notification.md` بخش «پیکربندی».
+ |
+ |@see https://github.com/Derogaramin/Tavaan-Doc/blob/main/docs/03-engines/notification.md
  */
 
 return [
-    // کانال‌های فعال (خالی = همه)
-    'channels' => ['mail', 'sms', 'database', 'broadcast', 'webhook', 'telegram', 'bale', 'eitaa', 'push'],
+    /*| پیش‌فرض موتور (driver/store یا حالت فعال) */
+    'default' => env('NOTIFICATION_DEFAULT', 'default'),
 
-    'database' => [
-        'table' => 'tvn_notifications',
+    /*| کلید کش (در صورت استفاده) */
+    'prefix' => env('NOTIFICATION_PREFIX', 'notification:'),
+
+    /*| تنظیمات لاگ */
+    'log' => [
+        'channel' => env('NOTIFICATION_LOG_CHANNEL', 'notification'),
     ],
 
-    // آگاه‌سازی‌های ShouldQueue به صف بروند
-    'queue' => env_bool('TVN_NOTIFICATION_QUEUE', true),
-
-    'sms' => [
-        'driver' => env_string('TVN_SMS_DRIVER', 'log'),
-        'gateways' => [
-            'kavenegar' => [
-                'api_key' => env_string('KAVENEGAR_KEY', ''),
-                'sender' => env_string('KAVENEGAR_SENDER', ''),
-            ],
-            'melipayamak' => [
-                'username' => env_string('MP_USER', ''),
-                'password' => env_string('MP_PASS', ''),
-                'sender' => env_string('MP_SENDER', ''),
-            ],
-            'ghasedak' => [
-                'api_key' => env_string('GHASEDAK_KEY', ''),
-                'sender' => env_string('GHASEDAK_SENDER', ''),
-            ],
-            'smsir' => [
-                'api_key' => env_string('SMSIR_KEY', ''),
-                'sender' => env_string('SMSIR_SENDER', ''),
-            ],
-            'farazsms' => [
-                'username' => env_string('FARAZ_USER', ''),
-                'password' => env_string('FARAZ_PASS', ''),
-                'sender' => env_string('FARAZ_SENDER', ''),
-            ],
-        ],
+    /*| Facade */
+    'facade' => [
+        'name' => 'Notification',
+        'accessor' => 'notification',
     ],
 
-    'telegram' => [
-        'token' => env_string('TELEGRAM_BOT_TOKEN', ''),
-        'base_url' => env_string('TELEGRAM_API_URL', 'https://api.telegram.org'),
+    /*| سایر کلیدها (طبق مستندات) */
+    'options' => [
+        // TODO: کلیدهای اضافی طبق سند §۶ (پیکربندی)
     ],
-
-    'bale' => [
-        'token' => env_string('BALE_BOT_TOKEN', ''),
-        'base_url' => env_string('BALE_API_URL', 'https://tapi.bale.ai'),
-    ],
-
-    'eitaa' => [
-        'token' => env_string('EITAA_BOT_TOKEN', ''),
-        'base_url' => env_string('EITAA_API_URL', 'https://bot.eitaa.com/api'),
-    ],
-
-    'push' => [
-        'endpoint' => env_string('FCM_ENDPOINT', 'https://fcm.googleapis.com/fcm/send'),
-        'server_key' => env_string('FCM_SERVER_KEY', ''),
-    ],
-
-    // 🔒 Rate Limit — جلوگیری از SMS Bombing (DOC-066 §7)
-    'rate_limit' => [
-        'per_user_per_hour' => env_int('TVN_NOTIFICATION_RATE_LIMIT', 20),
-    ],
-
-    'log_sent' => env_bool('TVN_NOTIFICATION_LOG_SENT', true),
 ];
