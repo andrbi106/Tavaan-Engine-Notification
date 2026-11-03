@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notifications\Tests\Feature;
 
-use PHPUnit\Framework\TestCase;
+use Tavaan\Testing\TestCase;
 use Tavaan\Engine\Notifications\NotificationManager;
 use Tavaan\Engine\Notifications\NotificationServiceProvider;
 
