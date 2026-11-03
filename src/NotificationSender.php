@@ -2,21 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notification;
+namespace Tavaan\Engine\Notifications;
 
 final class NotificationSender
 {
-    public function send()
+    private array $sent = [];
+
+    public function __construct(private readonly array $config = []) {}
+
+    public function send(mixed $notifiable, Notification $notification): void
     {
-        if (!headers_sent()) { http_response_code($this->status); foreach ($this->headers->all() as $name => $value) { header(str_replace(" ", "-", ucwords(str_replace("-", " ", $name))) . ": " . $value); } } echo $this->getContent();
-    }: {$value}"); } } echo $this->getContent();
+        $channels = $notification->via($notifiable);
+        foreach ($channels as $channel) {
+            $this->sent[] = ['notifiable' => $notifiable, 'notification' => $notification, 'channel' => $channel];
+        }
     }
-    public function sendNow()
+
+    public function sendNow(mixed $notifiable, Notification $notification): void
     {
-        return null;
+        $this->send($notifiable, $notification);
     }
-    public function route()
+
+    public function route(string $channel, mixed $value): self
     {
-        return null;
+        return $this;
+    }
+
+    public function getSent(): array
+    {
+        return $this->sent;
     }
 }
