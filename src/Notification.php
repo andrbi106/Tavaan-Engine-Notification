@@ -60,7 +60,13 @@ final class SimpleNotifiable implements Notifiable
     }
 
     public function toDatabase(Notifiable $n): array { return []; }
-    public function toMail(Notifiable $n): mixed { return null; }
-    public function toSms(Notifiable $n): mixed { return null; }
-    public function toTelegram(Notifiable $n): mixed { return null; }
+    public function toMail(Notifiable $n): mixed {
+        return null;
+    }
+    public function toSms(Notifiable $n): mixed {
+        return null;
+    }
+    public function toTelegram(Notifiable $n): mixed {
+        return null;
+    }
 }
