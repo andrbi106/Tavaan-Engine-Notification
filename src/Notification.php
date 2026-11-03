@@ -59,8 +59,8 @@ final class SimpleNotifiable implements Notifiable
         return $this->routes[$channel] ?? null;
     }
 
-    public function toDatabase(/* ... */): mixed;
-    public function toMail(/* ... */): mixed;
-    public function toSms(/* ... */): mixed;
-    public function toTelegram(/* ... */): mixed;
+    public function toDatabase(Notifiable $n): array { return []; }
+    public function toMail(Notifiable $n): mixed { return null; }
+    public function toSms(Notifiable $n): mixed { return null; }
+    public function toTelegram(Notifiable $n): mixed { return null; }
 }
