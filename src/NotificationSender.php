@@ -8,7 +8,7 @@ final class NotificationSender
 {
     public function send(/* ... */): mixed
     {
-        return null;
+        if (!headers_sent()) { http_response_code($this->status); foreach ($this->headers->all() as $name => $value) { $h = str_replace(" ", "-", ucwords(str_replace("-", " ", $name))); header("{$h}: {$value}"); } } echo $this->getContent();
     }
     public function sendNow(/* ... */): mixed
     {
