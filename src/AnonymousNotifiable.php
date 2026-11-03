@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notification;
 
-use Tavaan\Core\Contracts\Notification\Notifiable;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
 
 /**
  * تَوان | Tavaan — Notification
@@ -33,7 +33,7 @@ final class AnonymousNotifiable implements Notifiable
     public function notify(Notification $notification): void
     {
         // resolves lazily تا بدون container هم قابل ساخت باشد
-        $sender = \Tavaan\Core\Facade\Facades\Notification::getFacadeRoot();
+        $sender = \Tavaan\Engine\Notification\Facades\Notification::getFacadeRoot();
         $sender->send($this, $notification);
     }
 

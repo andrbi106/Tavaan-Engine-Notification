@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notification\Jobs;
 
-use Tavaan\Core\Contracts\Notification\Notifiable;
-use Tavaan\Core\Contracts\Queue\ShouldQueue;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
+use Tavaan\Engine\Queue\Contracts\ShouldQueue;
 use Tavaan\Engine\Notification\Notification;
 use Tavaan\Engine\Notification\NotificationSender;
 

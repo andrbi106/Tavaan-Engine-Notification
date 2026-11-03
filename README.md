@@ -1,46 +1,91 @@
-# Notification
+# Tavaan Engine — Notification
 
-> آگاه‌سازی چندکاناله (Mail/SMS/Database) با Notification pattern.
+> **آگاه‌سازی** — موتور Notification در فریمورک تَوان
+
+## مشخصات
 
 | فیلد | مقدار |
-|------|------|
-| Engine ID | `tavaan.engine.notification` |
-| DOC-ID | `DOC-066` |
-| Namespace | `Tavaan\Engine\Notifications` |
-| اولویت | P1 (فاز M5) |
-| Facade | `Notification` |
-| مخزن | https://github.com/andrbi106/Tavaan-Engine-Notification |
-| مستندات | https://github.com/Derogaramin/Tavaan-Doc/blob/main/docs/03-engines/notification.md
+|---|---|
+| شناسه | `tavaan.engine.notification` |
+| نام | `Notification` |
+| عنوان فارسی | آگاه‌سازی |
+| نسخه | `0.1.0` |
+| namespace | `Tavaan\Engine\Notifications` |
+| نوع | `engine` |
+| Facade | `Notification` (accessor: `notification`) |
 
-## استفاده
+## قراردادها (Contracts)
 
-```php
-use Tavaan\Engine\Notifications\NotificationManager;
-use Tavaan\Engine\Notifications\Notification;
-use Tavaan\Engine\Notifications\Notifiable;
-use Tavaan\Engine\Notifications\SimpleNotifiable;
+این موتور قراردادهای زیر را ارائه می‌دهد:
 
-// تعریف Notification
-class OrderShipped extends Notification {
-    public function __construct(private readonly int $orderId) {}
-    public function via(Notifiable $n): array { return ['mail', 'sms', 'database']; }
-    public function toMail(Notifiable $n): string { return 'Order shipped!'; }
-    public function toSms(Notifiable $n): string { return 'Order ' . $this->orderId . ' shipped'; }
-    public function toDatabase(Notifiable $n): array { return ['order_id' => $this->orderId]; }
-}
+- `Tavaan\Engine\Notifications\Contracts\Notifiable`
 
-// ارسال
-$m = new NotificationManager();
-$user = new SimpleNotifiable(['mail' => 'u@example.com', 'sms' => '09123456789']);
-$m->send($user, new OrderShipped(42));
+## خطاها (Exceptions)
 
-// به چند کاربر
-$m->sendTo([$user1, $user2], new OrderShipped(42));
+- `Tavaan\Engine\Notifications\Exceptions\NotificationException`
+
+## Facadeها
+
+- `Tavaan\Engine\Notifications\Facades\Notification`
+
+## کلاس‌های اصلی
+
+- `src/AnonymousNotifiable.php`
+- `src/ArrayNotification.php`
+- `src/Channels/BroadcastChannel.php`
+- `src/Channels/Channels.php`
+- `src/Channels/PushChannel.php`
+- `src/Channels/TelegramChannel.php`
+- `src/Channels/WebhookChannel.php`
+- `src/Events/NotificationFailed.php`
+- `src/Events/NotificationSending.php`
+- `src/Events/NotificationSent.php`
+- `src/Jobs/SendQueuedNotification.php`
+- `src/Messages/MailMessage.php`
+- `src/Messages/SmsMessage.php`
+- `src/Messages/TelegramMessage.php`
+- `src/Messages/WebhookMessage.php`
+- `src/Notification.php`
+- `src/NotificationManager.php`
+- `src/NotificationSender.php`
+- `src/NotificationServiceProvider.php`
+- `src/RoutesNotifications.php`
+- ... و 10 فایل دیگر
+
+## Service Providerها
+
+- `Tavaan\Engine\Notifications\NotificationServiceProvider`
+
+## وابستگی‌ها
+
+**موتورهای مورد‌نیاز:**
+
+- `config`
+- `event`
+
+## پیکربندی
+
+- فایل پیکربندی: `config/notification.php`
+- کلید: `notification`
+
+## نصب
+
+```bash
+git clone https://github.com/andrbi106/Tavaan-Engine-Notification.git
 ```
 
-## مستندات
+این موتور بخشی از فریمورک تَوان است و معمولاً به‌صورت مستقیم نصب نمی‌شود،
+بلکه توسط [Tavaan-Core](https://github.com/andrbi106/Tavaan-Core) مدیریت می‌شود.
 
-[docs/03-engines/notification.md](https://github.com/Derogaramin/Tavaan-Doc/blob/main/docs/03-engines/notification.md)
+## روابط با سایر مخازن
 
----
-*Generated on 2026-11-03.*
+| مخزن | نقش |
+|---|---|
+| **`andrbi106/Tavaan-Engine-Notification`** (این مخزن) | موتور Notification |
+| `andrbi106/Tavaan-Engine-Core` | ساختار پایه + درگاه ارتباط موتورها |
+| `andrbi106/Tavaan-Core` | اسکلت اپلیکیشن + همهٔ موتورها |
+| `Derogaramin/Tavaan-Framework` | فریمورک مادر (monorepo) |
+
+## مجوز
+
+MIT — هم‌راستا با فریمورک مادر تَوان.

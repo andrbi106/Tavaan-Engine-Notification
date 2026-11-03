@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notification;
 
-use Tavaan\Core\Contracts\Notification\Notifiable;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
 use Tavaan\Engine\Notification\Messages\MailMessage;
 use Tavaan\Engine\Notification\Messages\SmsMessage;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notification\Channels;
 
-use Tavaan\Core\Contracts\Notification\Notifiable;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
 use Tavaan\Engine\HttpClient\Factory as HttpFactory;
 use Tavaan\Engine\Notification\Exceptions\NotificationException;
 use Tavaan\Engine\Notification\Messages\WebhookMessage;

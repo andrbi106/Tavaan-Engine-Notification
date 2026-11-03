@@ -27,7 +27,7 @@ trait RoutesNotifications
     public function notify(Notification $notification): void
     {
         /** @var NotificationSender $sender */
-        $sender = \Tavaan\Core\Facade\Facades\Notification::getFacadeRoot();
+        $sender = \Tavaan\Engine\Notification\Facades\Notification::getFacadeRoot();
         $sender->send($this, $notification);
     }
 
