@@ -2,46 +2,19 @@
   "id": "tavaan.engine.notification",
   "type": "engine",
   "name": "Notification",
-  "title_fa": "آگاه‌سازی چندکاناله",
+  "title_fa": "آگاه‌سازی",
   "version": "0.1.0",
-  "namespace": "Tavaan\\Engine\\Notification\\",
+  "namespace": "Tavaan\\Engine\\Notifications\\",
   "autoload": {
     "psr-4": {
-      "Tavaan\\Engine\\Notification\\": "src/"
+      "Tavaan\\Engine\\Notifications\\": "src/"
     }
   },
-  "providers": [
-    "Tavaan\\Engine\\Notification\\NotificationSenderServiceProvider"
-  ],
-  "requires": {
-    "php": ">=8.2",
-    "engines": [
-      "config",
-      "event"
-    ]
-  },
-  "soft_requires": {
-    "engines": [
-      "mail",
-      "queue",
-      "database",
-      "http-client",
-      "cache",
-      "log"
-    ]
-  },
-  "config": {
-    "file": "config/notification.php",
-    "key": "notification"
-  },
-  "tables": [
-    "tvn_notifications"
-  ],
+  "providers": ["Tavaan\\Engine\\Notifications\\NotificationServiceProvider"],
+  "requires": {"php": ">=8.2", "engines": ["config", "event"]},
+  "config": {"file": "config/notification.php", "key": "notification"},
+  "tables": [],
   "commands": [],
-  "facade": {
-    "name": "Notification",
-    "accessor": "notification"
-  },
-  "docs": "docs/03-engines/notification.md",
-  "notes": "M5 — ۸ کانال (mail/sms/database/broadcast/push/webhook/telegram/bale/eitaa)، ۵ درگاه پیامک ایرانی (کاوه‌نگار/ملی‌پیامک/قاصدک/SMS.ir/فراز) + Log، In-App با unread/markAsRead، 🔒 Rate Limit ضد SMS Bombing، mask شماره در لاگ، AnonymousNotifiable، Fake/Assertions."
+  "facade": {"name": "Notification", "accessor": "notification"},
+  "docs": "docs/03-engines/notification.md"
 }
