@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tavaan\Engine\Notification\Channels;
 
-use Tavaan\Engine\Notification\Notifiable;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
 use Tavaan\Engine\Notification\Notification;
 
 /**

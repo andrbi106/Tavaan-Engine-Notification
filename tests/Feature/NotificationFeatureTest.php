@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Tests\Feature;
+namespace Tavaan\Engine\Notification\Tests\Feature;
 
 use Tavaan\Testing\TestCase;
-use Tavaan\Engine\Notifications\NotificationManager;
-use Tavaan\Engine\Notifications\NotificationServiceProvider;
+use Tavaan\Engine\Notification\NotificationManager;
+use Tavaan\Engine\Notification\NotificationServiceProvider;
 
 final class NotificationFeatureTest extends TestCase
 {

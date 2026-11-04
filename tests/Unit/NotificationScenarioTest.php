@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Tests\Unit;
+namespace Tavaan\Engine\Notification\Tests\Unit;
 
 use Tavaan\Testing\TestCase;
-use Tavaan\Engine\Notifications\SimpleNotifiable;
+use Tavaan\Engine\Notification\SimpleNotifiable;
 
 /**
  * T-NN scenario tests for the notification engine.

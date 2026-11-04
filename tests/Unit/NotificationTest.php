@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Tests\Unit;
+namespace Tavaan\Engine\Notification\Tests\Unit;
 
 use Tavaan\Testing\TestCase;
-use Tavaan\Engine\Notifications\NotificationManager;
-use Tavaan\Engine\Notifications\Notification;
-use Tavaan\Engine\Notifications\Notifiable;
-use Tavaan\Engine\Notifications\SimpleNotifiable;
-use Tavaan\Engine\Notifications\Channels\DatabaseChannel;
-use Tavaan\Engine\Notifications\Channels\MailChannel;
-use Tavaan\Engine\Notifications\Channels\SmsChannel;
-use Tavaan\Engine\Notifications\Channels\ChannelInterface;
+use Tavaan\Engine\Notification\NotificationManager;
+use Tavaan\Engine\Notification\Notification;
+use Tavaan\Engine\Notification\Notifiable;
+use Tavaan\Engine\Notification\SimpleNotifiable;
+use Tavaan\Engine\Notification\Channels\DatabaseChannel;
+use Tavaan\Engine\Notification\Channels\MailChannel;
+use Tavaan\Engine\Notification\Channels\SmsChannel;
+use Tavaan\Engine\Notification\Channels\ChannelInterface;
 
 final class NotificationTest extends TestCase
 {
