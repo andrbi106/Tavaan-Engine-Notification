@@ -7,7 +7,7 @@ namespace Tavaan\Engine\Notification\Tests\Unit;
 use Tavaan\Testing\TestCase;
 use Tavaan\Engine\Notification\NotificationManager;
 use Tavaan\Engine\Notification\Notification;
-use Tavaan\Engine\Notification\Notifiable;
+use Tavaan\Engine\Notification\Contracts\Notifiable;
 use Tavaan\Engine\Notification\SimpleNotifiable;
 use Tavaan\Engine\Notification\Channels\DatabaseChannel;
 use Tavaan\Engine\Notification\Channels\MailChannel;
