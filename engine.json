@@ -10,11 +10,26 @@
       "Tavaan\\Engine\\Notifications\\": "src/"
     }
   },
-  "providers": ["Tavaan\\Engine\\Notifications\\NotificationServiceProvider"],
-  "requires": {"php": ">=8.2", "engines": ["config", "event"]},
-  "config": {"file": "config/notification.php", "key": "notification"},
+  "providers": [
+    "Tavaan\\Engine\\Notifications\\NotificationServiceProvider"
+  ],
+  "requires": {
+    "php": ">=8.2",
+    "engines": [
+      "config",
+      "event"
+    ]
+  },
+  "config": {
+    "file": "config/notification.php",
+    "key": "notification"
+  },
   "tables": [],
   "commands": [],
-  "facade": {"name": "Notification", "accessor": "notification"},
-  "docs": "docs/03-engines/notification.md"
+  "facade": {
+    "name": "Notification",
+    "accessor": "notification"
+  },
+  "docs": "docs/03-engines/notification.md",
+  "class": "Tavaan\\Engine\\Notifications\\NotificationEngine"
 }

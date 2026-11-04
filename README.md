@@ -2,6 +2,8 @@
 
 > **آگاه‌سازی** — موتور Notification در فریمورک تَوان
 
+این موتور از کلاس پایهٔ `Engine` (در [Tavaan-Engine-Core](https://github.com/andrbi106/Tavaan-Engine-Core)) ارث می‌برد.
+
 ## مشخصات
 
 | فیلد | مقدار |
@@ -11,80 +13,60 @@
 | عنوان فارسی | آگاه‌سازی |
 | نسخه | `0.1.0` |
 | namespace | `Tavaan\Engine\Notifications` |
-| نوع | `engine` |
-| Facade | `Notification` (accessor: `notification`) |
+| کلاس موتور | `Tavaan\Engine\Notifications\NotificationEngine` |
+| Facade | Notification (`notification`) |
 
-## قراردادها (Contracts)
+## کلاس موتور
 
-این موتور قراردادهای زیر را ارائه می‌دهد:
+```php
+namespace Tavaan\Engine\Notifications;
 
-- `Tavaan\Engine\Notifications\Contracts\Notifiable`
+use Tavaan\EngineCore\Engine as BaseEngine;
+use Tavaan\EngineCore\Contracts\EngineManifestInterface;
 
-## خطاها (Exceptions)
+final class NotificationEngine extends BaseEngine
+{
+    public function __construct(EngineManifestInterface $manifest)
+    {
+        parent::__construct($manifest);
+    }
 
-- `Tavaan\Engine\Notifications\Exceptions\NotificationException`
+    public function register(ContainerInterface $container): void
+    {
+        parent::register($container);
+        // bindingهای اختصاصی موتور
+    }
 
-## Facadeها
+    public function boot(): void
+    {
+        parent::boot();
+    }
+}
+```
 
-- `Tavaan\Engine\Notifications\Facades\Notification`
+**فایل:** `src/NotificationEngine.php`
 
-## کلاس‌های اصلی
+## وابستگی‌ها
 
-- `src/AnonymousNotifiable.php`
-- `src/ArrayNotification.php`
-- `src/Channels/BroadcastChannel.php`
-- `src/Channels/Channels.php`
-- `src/Channels/PushChannel.php`
-- `src/Channels/TelegramChannel.php`
-- `src/Channels/WebhookChannel.php`
-- `src/Events/NotificationFailed.php`
-- `src/Events/NotificationSending.php`
-- `src/Events/NotificationSent.php`
-- `src/Jobs/SendQueuedNotification.php`
-- `src/Messages/MailMessage.php`
-- `src/Messages/SmsMessage.php`
-- `src/Messages/TelegramMessage.php`
-- `src/Messages/WebhookMessage.php`
-- `src/Notification.php`
-- `src/NotificationManager.php`
-- `src/NotificationSender.php`
-- `src/NotificationServiceProvider.php`
-- `src/RoutesNotifications.php`
-- ... و 10 فایل دیگر
+**موتورهای مورد‌نیاز:** `config`, `event`
 
 ## Service Providerها
 
 - `Tavaan\Engine\Notifications\NotificationServiceProvider`
 
-## وابستگی‌ها
+## سه درگاه ارتباط با سایر موتورها
 
-**موتورهای مورد‌نیاز:**
-
-- `config`
-- `event`
-
-## پیکربندی
-
-- فایل پیکربندی: `config/notification.php`
-- کلید: `notification`
+| درگاه | الگو | متدهای convenience |
+|---|---|---|
+| Container | pull-based DI | `make()`, `bound()` |
+| Events | pub/sub | `dispatch()`, `listen()` |
+| EngineBus | point-to-point RPC | `call()`, `offer()` |
 
 ## نصب
 
 ```bash
 git clone https://github.com/andrbi106/Tavaan-Engine-Notification.git
 ```
-
-این موتور بخشی از فریمورک تَوان است و معمولاً به‌صورت مستقیم نصب نمی‌شود،
-بلکه توسط [Tavaan-Core](https://github.com/andrbi106/Tavaan-Core) مدیریت می‌شود.
-
-## روابط با سایر مخازن
-
-| مخزن | نقش |
-|---|---|
-| **`andrbi106/Tavaan-Engine-Notification`** (این مخزن) | موتور Notification |
-| `andrbi106/Tavaan-Engine-Core` | ساختار پایه + درگاه ارتباط موتورها |
-| `andrbi106/Tavaan-Core` | اسکلت اپلیکیشن + همهٔ موتورها |
-| `Derogaramin/Tavaan-Framework` | فریمورک مادر (monorepo) |
 
 ## مجوز
 
