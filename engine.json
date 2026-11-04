@@ -4,14 +4,14 @@
   "name": "Notification",
   "title_fa": "آگاه‌سازی",
   "version": "0.1.0",
-  "namespace": "Tavaan\\Engine\\Notifications\\",
+  "namespace": "Tavaan\\Engine\\Notification\\",
   "autoload": {
     "psr-4": {
-      "Tavaan\\Engine\\Notifications\\": "src/"
+      "Tavaan\\Engine\\Notification\\": "src/"
     }
   },
   "providers": [
-    "Tavaan\\Engine\\Notifications\\NotificationServiceProvider"
+    "Tavaan\\Engine\\Notification\\NotificationServiceProvider"
   ],
   "requires": {
     "php": ">=8.2",
@@ -31,5 +31,5 @@
     "accessor": "notification"
   },
   "docs": "docs/03-engines/notification.md",
-  "class": "Tavaan\\Engine\\Notifications\\NotificationEngine"
+  "class": "Tavaan\\Engine\\Notification\\NotificationEngine"
 }

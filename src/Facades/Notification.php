@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Facades;
+namespace Tavaan\Engine\Notification\Facades;
 
 use Tavaan\Core\Facade\Facade;
 

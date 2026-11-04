@@ -19,7 +19,7 @@ declare(strict_types=1);
  * @see \Tavaan\EngineCore\Engine
  */
 
-namespace Tavaan\Engine\Notifications;
+namespace Tavaan\Engine\Notification;
 
 use Tavaan\Core\Contracts\Container\ContainerInterface;
 use Tavaan\EngineCore\Contracts\EngineManifestInterface;

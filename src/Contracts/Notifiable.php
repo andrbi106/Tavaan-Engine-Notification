@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Contracts;
+namespace Tavaan\Engine\Notification\Contracts;
 
 /**
  * تَوان | Tavaan — Contracts

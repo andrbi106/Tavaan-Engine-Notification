@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications;
+namespace Tavaan\Engine\Notification;
 
-use Tavaan\Engine\Notifications\Channels\ChannelInterface;
-use Tavaan\Engine\Notifications\Channels\DatabaseChannel;
-use Tavaan\Engine\Notifications\Channels\MailChannel;
-use Tavaan\Engine\Notifications\Channels\SmsChannel;
+use Tavaan\Engine\Notification\Channels\ChannelInterface;
+use Tavaan\Engine\Notification\Channels\DatabaseChannel;
+use Tavaan\Engine\Notification\Channels\MailChannel;
+use Tavaan\Engine\Notification\Channels\SmsChannel;
 
 /**
  * NotificationManager — مدیریت کانال‌ها و ارسال اعلان.

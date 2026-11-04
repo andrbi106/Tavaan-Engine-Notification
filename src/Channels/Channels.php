@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications\Channels;
+namespace Tavaan\Engine\Notification\Channels;
 
-use Tavaan\Engine\Notifications\Notifiable;
-use Tavaan\Engine\Notifications\Notification;
+use Tavaan\Engine\Notification\Notifiable;
+use Tavaan\Engine\Notification\Notification;
 
 /**
  * قرارداد Channel.

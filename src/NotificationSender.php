@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications;
+namespace Tavaan\Engine\Notification;
 
 final class NotificationSender
 {

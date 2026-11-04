@@ -2,20 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Tavaan\Engine\Notifications;
+namespace Tavaan\Engine\Notification;
 
-/**
- * Notifiable — کلاس‌هایی که notification دریافت می‌کنند.
- *
- * @see docs/03-engines/notification.md
- */
-interface Notifiable
-{
-    /**
-     * @return array<string, mixed>
-     */
-    public function routeNotificationFor(string $channel): mixed;
-}
 
 /**
  * Notification — کلاس پایه برای اعلان‌ها.
